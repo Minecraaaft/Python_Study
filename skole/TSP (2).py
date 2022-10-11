@@ -11,20 +11,18 @@ import pandas as pd
 import random
 import math
 
-from numpy.random import randint
-
 data = pd.read_csv('TSPcities1000.txt',sep='\s+',header=None)
 data = pd.DataFrame(data)
 
 import matplotlib.pyplot as plt
 x = data[1]
 y = data[2]
-#plt.plot(x, y,'r.')
-#plt.show()
+plt.plot(x, y,'r.')
+plt.show()
 
 
 def createRandomRoute():
-    tour = [[i] for i in range(10)]
+    tour = [[i] for i in range(1000)]
     random.shuffle(tour)
     return tour
 
@@ -42,37 +40,12 @@ tour = createRandomRoute()
 print(tour)
 plotCityRoute(tour)
 
-def totalDistance(routes):
-    distance = 0
-    for i in range(len(route) - 1):
-        coord1 = routes[i]
-        coord2 = routes[i + 1]
-        distance += distancebetweenCities(coord1["x"], coord1["y"], coord2["x"], coord2["y"])
-    return distance
-
 # calculate distance between cities
 def distancebetweenCities(city1x, city1y, city2x, city2y):
     xDistance = abs(city1x-city2x)
     yDistance = abs(city1y-city2y)
     distance = math.sqrt((xDistance * xDistance) + (yDistance * yDistance))
     return distance
-
-num_of_routes = 10
-routes = []
-for i in range(num_of_routes):
-    route = createRandomRoute()
-    distance = routeDistance(route)
-    routes.append(route)
-
-numOfGenerations = 5
-
-for i in range(numOfGenerations):
-    routes = sortRoutesByDistance(routes)
-    if routes[0]
-
-
-# calculate distance between cities
-
 
 # distance between city number 100 and city number 105
 dist= distancebetweenCities(x[100], y[100], x[105], y[105])
@@ -81,9 +54,6 @@ print('Distance, % target: ', dist)
 best_score_progress = []  # Tracks progress
 
 # replace with your own calculations
-
-
-
 fitness_gen0 = 1000 # replace with your value
 print('Starting best score, % target: ', fitness_gen0)
 
